@@ -32,8 +32,33 @@ public class Mascota {
 
     // SETTERS (Para modificar los valores)
 
-    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+
+    //Metodo para mostrar informacion
+
+    public void mostrarInfo(){
+        System.out.println("ID: " + id + "| Nombre: " + nombre + "| Edad: " + edad);
+    }
+
+
+    // Metodo que sera sobreescrito segun las subclases (Polimorfismo)
+    public String hacerSonido() {
+        return "La mascota hace un sonido general.";
+    }
 }
+
+
 
 
 
