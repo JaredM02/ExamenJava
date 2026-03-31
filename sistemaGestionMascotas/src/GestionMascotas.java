@@ -30,6 +30,43 @@ public class GestionMascotas {
         listaMascotas.add(nuevaMascota);
         System.out.println("Mascota registrada con exito.");
     }
+     // Mostrar todas usando polimorfismo
+    public void mostrarMascotas() {
+        if (listaMascotas.isEmpty()) {
+            System.out.println("No hay mascotas registradas."); 
+            return;
+        }
+        for (Mascota mascota : listaMascotas) {
+            mascota.mostrarInfo();
+            // Polimorfismo: cada objeto responde según su tipo 
+            // Se obtiene el nombre de la clase hija (Perro/Gato) dinamicamente con mascota.getClass().getSimpleName() , lo investigue
+            System.out.println("Tipo: " + mascota.getClass().getSimpleName()); 
+            System.out.println("Sonido: " + mascota.hacerSonido());
+            System.out.println("-----------------------");
+        }
+    }
 
-   
+    // Ejecutar sonido por ID 
+    public void sonarPorId(int id) {
+        for (Mascota mascota : listaMascotas) {
+            if (mascota.getId() == id) {
+                System.out.println("Resultado: " + mascota.hacerSonido()); 
+                return;
+            }
+        }
+        System.out.println("Mascota no encontrada.");
+    }
+
+    // Buscar por nombre 
+    public void buscarPorNombre(String nombre) {
+
+        for (Mascota mascota : listaMascotas) {
+            // Compara el nombre guardado con el buscado sin importar mayusculas o minusculas
+            if (mascota.getNombre().equalsIgnoreCase(nombre)) {
+                mascota.mostrarInfo(); 
+                return;
+            }
+        }
+        System.out.println("Mascota no encontrada."); 
+    }
 }
